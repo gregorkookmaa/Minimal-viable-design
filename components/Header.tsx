@@ -20,7 +20,7 @@ const Header: React.FC = () => {
           <img src={logo} alt="Doria Nova" className="h-28 w-auto" />
           <span className="text-xl font-bold tracking-tight text-[#44403F] -ml-0.5">Doria Nova</span>
         </div>
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <nav className="hidden md:flex items-center gap-8 text-base font-semibold text-[#44403F]">
           <a href="#services" className="hover:text-brand transition-colors">Teenused</a>
           <a href="#success" className="hover:text-brand transition-colors">Edulood</a>
           <a href="#contact" className="hover:text-brand transition-colors">Kontakt</a>
