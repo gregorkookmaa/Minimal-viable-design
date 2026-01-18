@@ -21,8 +21,10 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-24 bg-white grid-bg relative overflow-hidden">
+      {/* Background Glow */}
+      <div className="blur-glow w-[600px] h-[600px] bg-brand/5 -bottom-40 -right-40"></div>
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto bg-white rounded-3xl border border-gray-100 overflow-hidden flex flex-col lg:flex-row shadow-xl">
           {/* Info Side - Changed to brandDark */}
           <div className="p-12 lg:w-1/3 bg-brandDark text-white">
