@@ -73,7 +73,7 @@ const Testimonials: React.FC = () => {
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Klientide edulood</h2>
           <p className="text-gray-600 text-lg max-w-2xl">
-            Kuulake, mida meie partnerid räägivad oma kogemusest Aura platvormi ja teenustega.
+            Kuulake, mida meie partnerid räägivad oma kogemusest Doria Nova platvormi ja teenustega.
           </p>
         </div>
 
