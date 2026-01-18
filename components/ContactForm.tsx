@@ -30,7 +30,7 @@ const ContactForm: React.FC = () => {
             <p className="text-white/80 mb-12">
               Kas olete valmis oma äri järgmisele tasemele viima? Täitke vorm ja me võtame teiega ühendust 24 tunni jooksul.
             </p>
-            
+
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
@@ -38,7 +38,7 @@ const ContactForm: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-xs text-white/60 uppercase font-bold tracking-wider">Email</p>
-                  <p className="font-medium">tere@aura.build</p>
+                  <p className="font-medium">info@dorianova.ee</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -59,22 +59,22 @@ const ContactForm: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Nimi</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Teie täisnimi"
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all text-gray-900"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="email@ettevote.ee"
                     className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all text-gray-900"
                   />
@@ -82,28 +82,28 @@ const ContactForm: React.FC = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Ettevõte</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={formData.company}
-                  onChange={(e) => setFormData({...formData, company: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="Teie ettevõtte nimi"
                   className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all text-gray-900"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Sõnum</label>
-                <textarea 
+                <textarea
                   rows={4}
                   required
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Kuidas saame teid aidata?"
                   className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition-all text-gray-900 resize-none"
                 />
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={status !== 'idle'}
                 className="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg active:scale-[0.98]"
               >

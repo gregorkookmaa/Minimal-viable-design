@@ -216,7 +216,21 @@ const Testimonials: React.FC = () => {
                 </p>
                 <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
                   <p className="whitespace-pre-wrap">
-                    {selectedTestimonial.story || selectedTestimonial.content}
+                    {(selectedTestimonial.story || selectedTestimonial.content).split('\n').map((line, i) => {
+                      if (line.startsWith('###')) {
+                        return <h4 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-4">{line.replace('###', '').trim()}</h4>
+                      }
+                      if (line.trim() === '') return null;
+
+                      return (
+                        <p key={i} className="mb-4" dangerouslySetInnerHTML={{
+                          __html: line
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/✅/g, '<span class="mr-2">✅</span>')
+                            .replace(/🔹/g, '<span class="mr-2 text-brand">🔹</span>')
+                        }} />
+                      )
+                    })}
                   </p>
                 </div>
               </div>

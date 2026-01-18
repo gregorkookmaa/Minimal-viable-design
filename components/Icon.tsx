@@ -1,18 +1,22 @@
 import React from 'react';
-import { 
-  TrendingUp, 
-  Cpu, 
-  BarChart3, 
-  Settings, 
-  MessageSquare, 
-  DollarSign, 
-  ChevronLeft, 
+import {
+  TrendingUp,
+  Cpu,
+  BarChart3,
+  Settings,
+  MessageSquare,
+  DollarSign,
+  ChevronLeft,
   ChevronRight,
   ChevronDown,
   ArrowRight,
   Mail,
   User,
-  MessageCircle
+  MessageCircle,
+  Package,
+  Monitor,
+  UserPlus,
+  Users
 } from 'lucide-react';
 
 interface IconProps {
@@ -36,6 +40,10 @@ const Icon: React.FC<IconProps> = ({ name, className, size = 24 }) => {
     case 'mail': return <Mail className={className} size={size} />;
     case 'user': return <User className={className} size={size} />;
     case 'message-circle': return <MessageCircle className={className} size={size} />;
+    case 'box': return <Package className={className} size={size} />;
+    case 'monitor': return <Monitor className={className} size={size} />;
+    case 'user-plus': return <UserPlus className={className} size={size} />;
+    case 'users': return <Users className={className} size={size} />;
     default: return null;
   }
 };

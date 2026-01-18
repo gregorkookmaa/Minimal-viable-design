@@ -3,6 +3,7 @@ export interface ValueProp {
   title: string;
   description: string;
   icon: string;
+  content?: string;
 }
 
 export interface Testimonial {

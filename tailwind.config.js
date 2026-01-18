@@ -26,6 +26,7 @@ export default {
                 'slide-in-right': 'slide-in-right 0.4s ease-out',
                 'slide-in-left': 'slide-in-left 0.4s ease-out',
                 'zoom-in': 'zoom-in 0.3s ease-out',
+                'float': 'float 6s ease-in-out infinite',
             },
             keyframes: {
                 'infinite-scroll': {
@@ -39,6 +40,10 @@ export default {
                 'slide-up': {
                     '0%': { transform: 'translateY(20px)', opacity: '0' },
                     '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                'float': {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-10px)' },
                 },
                 'slide-in-right': {
                     '0%': { transform: 'translateX(50px)' },

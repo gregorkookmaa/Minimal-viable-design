@@ -6,24 +6,25 @@ const Hero: React.FC = () => {
     <section className="relative min-h-[95vh] flex items-center pt-24 pb-12 overflow-hidden bg-white grid-bg">
       {/* Background Glows */}
       <div className="blur-glow w-[600px] h-[600px] bg-brand/10 -top-40 -left-40"></div>
-      
+
       <div className="container mx-auto px-6 z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          
+
           {/* Left Column: Content */}
           <div className="flex-1 text-left max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-10 bg-white/80 backdrop-blur-sm shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
               Võtame vastu uusi kliente
             </div>
-            
-            <h1 className="text-6xl md:text-[5.5rem] font-normal tracking-tight text-[#0E131F] mb-10 leading-[1.02]">
-              Tulude <span className="font-serif italic text-gray-400 font-light">Kasvatamine</span> <br />
-              läbi <span className="font-semibold text-gradient">Intelligentse Turunduse.</span>
+
+            <h1 className="text-5xl md:text-[4rem] lg:text-[5rem] font-bold tracking-tight text-[#0E131F] mb-10 leading-[1.05]">
+              Ettevõtte töö <span className="font-serif italic text-gray-400 font-light">Sujuvamaks</span> – <br />
+              <span className="font-semibold text-gradient">Nutikas Automaatika</span> <br />
+              teeb ära üksluised ülesanded.
             </h1>
-            
+
             <p className="text-lg md:text-xl text-gray-500 mb-12 leading-relaxed max-w-xl">
-              Me ühendame loova strateegia <b className="text-gray-900 font-semibold">AI automatiseerimisega</b>, et tagada prognoositav kasv. Moodne agentuur ambitsioonikatele brändidele.
+              Aitame luua ettevõttele nutikaid süsteeme, kus vaevaline rutiin asendub kiiruse ja täpsusega ning meeskond saab pühenduda sellele, mis on päriselt oluline.
             </p>
 
             <div className="flex flex-wrap items-center gap-8">
@@ -42,20 +43,20 @@ const Hero: React.FC = () => {
 
           {/* Right Column: Visual Mockup */}
           <div className="flex-1 relative w-full lg:w-auto">
-            <div className="relative group max-w-md mx-auto lg:max-w-none">
+            <div className="relative group max-w-md mx-auto lg:max-w-none perspective-1000">
               {/* Decorative Shadow/Background behind image */}
-              <div className="absolute -inset-6 bg-gray-50/50 rounded-[48px] -z-10 transform -rotate-2"></div>
-              
+              <div className="absolute -inset-6 bg-gray-50/50 rounded-[48px] -z-10 transform -rotate-2 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-105"></div>
+
               {/* Main Image */}
-              <div className="aspect-[4/5] rounded-[40px] overflow-hidden border-[12px] border-white shadow-2xl relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" 
-                  alt="Team working" 
-                  className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
+              <div className="aspect-[4/5] rounded-[40px] overflow-hidden border-[12px] border-white shadow-2xl relative transform transition-all duration-700 group-hover:rotate-1 group-hover:scale-[1.02] group-hover:shadow-3xl group-hover:border-brand/60">
+                <img
+                  src="https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800"
+                  alt="Automation Dashboard"
+                  className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
                 />
-                
+
                 {/* Floating Results Card */}
-                <div className="absolute bottom-8 left-6 right-6 bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl p-6 border border-white/40 transform group-hover:translate-y-[-8px] transition-transform duration-500">
+                <div className="absolute bottom-8 left-6 right-6 bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl p-6 border border-white/40 transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-brand/20 shadow-xl">
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Keskmised tulemused</span>
                     <div className="text-brand">
