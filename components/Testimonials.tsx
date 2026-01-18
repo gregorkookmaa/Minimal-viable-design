@@ -68,7 +68,7 @@ const Testimonials: React.FC = () => {
 
 
   return (
-    <section id="success" className="py-24 bg-white overflow-hidden relative">
+    <section id="success" className="py-24 bg-gray-50 overflow-hidden relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Klientide edulood</h2>
@@ -115,7 +115,7 @@ const Testimonials: React.FC = () => {
                   className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0"
                   onClick={() => setSelectedTestimonial(testimonial)}
                 >
-                  <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full cursor-pointer group">
+                  <div className="bg-white rounded-3xl p-8 border border-gray-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full cursor-pointer group">
                     {/* Header with Image and Info */}
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:scale-105 transition-transform">
