@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply antialiased text-gray-900 bg-white;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+@layer utilities {
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-accentOrange;
+    }
+
+    .grid-bg {
+        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    .blur-glow {
+        position: absolute;
+        filter: blur(120px);
+        z-index: -1;
+        border-radius: 50%;
+        opacity: 0.15;
+    }
+
+    .scroller-inner {
+        display: flex;
+        width: max-content;
+        flex-wrap: nowrap;
+        will-change: transform;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+}
