@@ -12,4 +12,5 @@ export interface Testimonial {
   content: string;
   image: string;
   company: string;
+  story?: string;
 }

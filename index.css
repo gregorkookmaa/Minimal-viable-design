@@ -7,6 +7,22 @@
         @apply antialiased text-gray-900 bg-white;
         font-family: 'Inter', sans-serif;
     }
+
+    :root {
+        --slide-size: 100%;
+    }
+
+    @media (min-width: 768px) {
+        :root {
+            /* 
+               Desktop: 3 items visible. 
+               Move distance = 33.333% + portion of gap.
+               Gap is 2rem (32px).
+               Roughly 33.333% + 0.667rem
+            */
+            --slide-size: calc(33.333% + 0.667rem);
+        }
+    }
 }
 
 @layer utilities {
