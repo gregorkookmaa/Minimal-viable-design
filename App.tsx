@@ -1,25 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import LogoReel from './components/LogoReel';
-import ValueProps from './components/ValueProps';
-import Testimonials from './components/Testimonials';
-import ContactForm from './components/ContactForm';
+import Home from './pages/Home';
+import Blog from './pages/Blog';
 import Footer from './components/Footer';
+import { useEffect } from 'react';
+
+// ScrollToTop component to reset scroll on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen selection:bg-brand selection:text-white">
-      <Header />
-      <main>
-        <Hero />
-        <LogoReel />
-        <ValueProps />
-        <Testimonials />
-        <ContactForm />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen selection:bg-brand selection:text-white">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
