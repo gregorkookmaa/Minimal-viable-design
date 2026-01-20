@@ -6,6 +6,7 @@ import Blog from './pages/Blog';
 import Footer from './components/Footer';
 import { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 // ScrollToTop component to reset scroll on route change
 const ScrollToTop = () => {
@@ -28,6 +29,7 @@ const App: React.FC = () => {
         </Routes>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </div>
     </Router>
   );
