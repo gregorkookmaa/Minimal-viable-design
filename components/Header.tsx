@@ -62,7 +62,7 @@ const Header: React.FC = () => {
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-brand transition-colors">Kontakt</a>
         </nav>
         <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} className="bg-brandDark text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-brand transition-all transform hover:scale-105 active:scale-95 shadow-md cursor-pointer">
-          Alusta kohe
+          Võta ühendust
         </a>
       </div>
     </header>

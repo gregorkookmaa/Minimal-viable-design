@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from './Icon';
+import heroImage from '../Images/hero-picture.jpg';
 
 const Hero: React.FC = () => {
   return (
@@ -12,14 +13,11 @@ const Hero: React.FC = () => {
 
           {/* Left Column: Content */}
           <div className="flex-1 text-left max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 text-[10px] uppercase tracking-widest font-bold text-gray-500 mb-10 bg-white/80 backdrop-blur-sm shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
-              Võtame vastu uusi kliente
-            </div>
+
 
             <h1 className="text-5xl md:text-[4rem] lg:text-[5rem] font-bold tracking-tight text-[#0E131F] mb-10 leading-[1.05]">
-              Ettevõtte töö <span className="font-serif italic text-gray-400 font-light">Sujuvaks</span> – <br />
-              <span className="font-semibold text-gradient">Nutikas Automaatika</span> <br />
+              Ettevõtte töö <span className="font-semibold text-[#0E131F]">Sujuvaks</span> – <br />
+              <span className="font-serif italic text-gradient font-light">Nutikas Automaatika</span> <br />
               teeb ära üksluised ülesanded.
             </h1>
 
@@ -28,8 +26,8 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-8">
-              <a href="#contact" className="bg-brandDark text-white px-10 py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-brand transition-all transform hover:scale-105 active:scale-95 shadow-2xl shadow-gray-200">
-                Telli audit
+              <a href="#services" className="bg-brandDark text-white px-10 py-5 rounded-full font-bold flex items-center justify-center gap-3 hover:bg-brand transition-all transform hover:scale-105 active:scale-95 shadow-2xl shadow-gray-200">
+                Teenused
                 <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
                   <Icon name="arrow-right" size={14} />
                 </div>
@@ -50,29 +48,12 @@ const Hero: React.FC = () => {
               {/* Main Image */}
               <div className="aspect-[4/5] rounded-[40px] overflow-hidden border-[12px] border-white shadow-2xl relative transform transition-all duration-700 group-hover:rotate-1 group-hover:scale-[1.02] group-hover:shadow-3xl group-hover:border-brand/60">
                 <img
-                  src="https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800"
-                  alt="Automation Dashboard"
-                  className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 transition-all duration-700"
+                  src={heroImage}
+                  alt="Office Team Meeting"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
 
-                {/* Floating Results Card */}
-                <div className="absolute bottom-8 left-6 right-6 bg-white/95 backdrop-blur-md shadow-2xl rounded-2xl p-6 border border-white/40 transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-brand/20 shadow-xl">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Keskmised tulemused</span>
-                    <div className="text-brand">
-                      <Icon name="trending-up" size={18} />
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-brandSoft flex items-center justify-center border border-brand/10">
-                      <Icon name="cpu" size={24} className="text-brand" />
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-bold text-gray-900 tracking-tight">+240% ROI kasv</h4>
-                      <p className="text-xs text-gray-500 font-medium">Kliendiportfellide lõikes Q1</p>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
