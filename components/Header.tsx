@@ -52,8 +52,7 @@ const Header: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerClass}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-0">
-          <img src={logo} alt="Doria Nova" className="h-28 w-auto" />
-          <span className="text-xl font-bold tracking-tight text-[#44403F] -ml-0.5">Doria Nova</span>
+          <img src={logo} alt="Doria Nova" className="h-24 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-base font-semibold text-[#44403F]">
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-brand transition-colors">Teenused</a>
