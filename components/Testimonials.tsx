@@ -4,67 +4,54 @@ import { TESTIMONIALS } from '../constants';
 import { Testimonial } from '../types';
 
 const Testimonials: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // Start at index 1 because index 0 is the clone of the last item
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Clone the first 3 items to append to end for infinite loop effect on desktop (3 items visible)
-  // For mobile (1 item visible), this logic might need adjustment or simpler wrap, 
-  // but for now let's optimize for the 3-column "jump" fix requested.
+  // Create a bidirectional loop: [Last, First, Second, ..., Last, First]
+  // This ensures that when we are at "First", there is a "Last" to the left (index 0)
+  // providing the necessary shadow/overflow look.
   const extendedTestimonials = [
+    ...TESTIMONIALS.slice(-1),
     ...TESTIMONIALS,
-    ...TESTIMONIALS.slice(0, 3)
+    ...TESTIMONIALS.slice(0, 1)
   ];
 
   const handleNext = () => {
-    if (!isTransitioning) return;
-
-    setCurrentIndex(prev => {
-      const next = prev + 1;
-      // If we move past the original set, we need to reset.
-      // But we wait for the animation to finish first.
-      return next;
-    });
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev + 1);
   };
 
   const handlePrev = () => {
-    if (currentIndex === 0) {
-      // Instant jump to end (clone) without transition
-      setIsTransitioning(false);
-      setCurrentIndex(TESTIMONIALS.length);
-
-      // Then animate back one step
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsTransitioning(true);
-          setCurrentIndex(TESTIMONIALS.length - 1);
-        });
-      });
-    } else {
-      setCurrentIndex(prev => prev - 1);
-    }
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev - 1);
   };
 
-  // Watch for index changes to handle the seamless reset from End -> Start
+  // Watch for index changes to handle the seamless reset
   useEffect(() => {
-    if (currentIndex >= TESTIMONIALS.length) {
-      // We have scrolled into the cloned area. 
-      // Wait for the transition to finish (e.g., 500ms), then snap back to 0.
-      const timeout = setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentIndex(currentIndex % TESTIMONIALS.length);
+    if (!isTransitioning) return;
 
-        // Re-enable transition for next click
-        requestAnimationFrame(() => {
-          setTimeout(() => setIsTransitioning(true), 50); // Small delay to ensure browser paints
-        });
-      }, 500); // Duration matches CSS
+    const transitionDuration = 500;
+    const timeout = setTimeout(() => {
+      setIsTransitioning(false);
 
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex]);
+      // If we moved to the cloned Last item (index 0), jump to the real Last item
+      if (currentIndex === 0) {
+        setCurrentIndex(extendedTestimonials.length - 2);
+      }
+      // If we moved to the cloned First item (last index), jump to the real First item (index 1)
+      else if (currentIndex === extendedTestimonials.length - 1) {
+        setCurrentIndex(1);
+      }
+    }, transitionDuration);
+
+    return () => clearTimeout(timeout);
+  }, [currentIndex, isTransitioning, extendedTestimonials.length]);
 
 
   return (
@@ -73,17 +60,17 @@ const Testimonials: React.FC = () => {
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Klientide edulood</h2>
           <p className="text-gray-600 text-lg max-w-2xl">
-            Kuulake, mida meie partnerid räägivad oma kogemusest Doria Nova platvormi ja teenustega.
+            Vaadake mida meie partnerid räägivad oma kogemusest Doria Nova platvormi ja teenustega.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-7xl mx-auto px-4 lg:px-12">
+        <div className="relative max-w-4xl mx-auto px-4 lg:px-12">
 
           {/* Navigation Buttons (Absolute) */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 text-gray-900 hover:bg-brandDark hover:text-white transition-all shadow-md hover:shadow-lg active:scale-95 z-30 group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 text-gray-900 hover:bg-accentOrange hover:border-accentOrange hover:text-white transition-all shadow-md hover:shadow-lg active:scale-95 z-30 group"
             aria-label="Eelmine"
           >
             <Icon name="chevron-left" className="group-hover:text-white" />
@@ -91,7 +78,7 @@ const Testimonials: React.FC = () => {
 
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 text-gray-900 hover:bg-brandDark hover:text-white transition-all shadow-md hover:shadow-lg active:scale-95 z-30 group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white border border-gray-200 text-gray-900 hover:bg-accentOrange hover:border-accentOrange hover:text-white transition-all shadow-md hover:shadow-lg active:scale-95 z-30 group"
             aria-label="Järgmine"
           >
             <Icon name="chevron-right" className="group-hover:text-white" />
@@ -101,28 +88,28 @@ const Testimonials: React.FC = () => {
           <div className="overflow-hidden -mx-4 px-4 py-8">
             <div
               ref={trackRef}
-              className={`flex gap-6 lg:gap-8 ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              className={`flex ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
               style={{
                 // @ts-ignore
                 '--current-index': currentIndex,
-                transform: 'translateX(calc(var(--current-index) * -1 * var(--slide-size)))',
+                transform: 'translateX(calc(var(--current-index) * -100%))',
               } as React.CSSProperties}
             >
 
               {extendedTestimonials.map((testimonial, idx) => (
                 <div
                   key={`${testimonial.id}-${idx}`}
-                  className="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0"
+                  className="w-full flex-shrink-0 px-4"
                   onClick={() => setSelectedTestimonial(testimonial)}
                 >
-                  <div className="bg-white rounded-3xl p-8 border border-gray-100 hover:shadow-xl hover:border-brand/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full cursor-pointer group">
+                  <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg hover:shadow-xl hover:border-brand/30 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full cursor-pointer group">
                     {/* Header with Image and Info */}
                     <div className="flex items-center gap-4 mb-6">
                       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md group-hover:scale-105 transition-transform">
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full ${testimonial.isLogo ? 'object-contain p-2' : 'object-cover'}`}
                         />
                       </div>
                       <div>
@@ -133,7 +120,15 @@ const Testimonials: React.FC = () => {
 
                     {/* Stars or Quote Icon */}
                     <div className="mb-4">
-                      <Icon name="message-circle" className="text-brand/20 group-hover:text-brand transition-colors" size={32} />
+                      {testimonial.title && (
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight font-serif italic">
+                          {testimonial.title}
+                        </h3>
+                      )}
+
+                      {!testimonial.title && (
+                        <Icon name="message-circle" className="text-brand/20 group-hover:text-brand transition-colors" size={32} />
+                      )}
                     </div>
 
                     {/* Content */}
@@ -155,7 +150,7 @@ const Testimonials: React.FC = () => {
             {TESTIMONIALS.map((_, i) => (
               <div
                 key={i}
-                className={`w-2 h-2 rounded-full transition-all ${i === (currentIndex % TESTIMONIALS.length) ? 'w-8 bg-brand' : 'bg-gray-200'}`}
+                className={`w-2 h-2 rounded-full transition-all ${i === (currentIndex - 1 + TESTIMONIALS.length) % TESTIMONIALS.length ? 'w-8 bg-brand' : 'bg-gray-200'}`}
               />
             ))}
           </div>
@@ -201,12 +196,14 @@ const Testimonials: React.FC = () => {
                   <img
                     src={selectedTestimonial.image}
                     alt={selectedTestimonial.name}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full ${selectedTestimonial.isLogo ? 'object-contain p-2' : 'object-cover'}`}
                   />
                 </div>
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{selectedTestimonial.name}</h3>
-                  <p className="text-lg text-brand font-medium">{selectedTestimonial.role}, {selectedTestimonial.company}</p>
+                  <p className="text-lg text-brand font-medium">
+                    {[selectedTestimonial.role, selectedTestimonial.company].filter(Boolean).join(', ')}
+                  </p>
                 </div>
               </div>
 

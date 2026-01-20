@@ -14,4 +14,6 @@ export interface Testimonial {
   image: string;
   company: string;
   story?: string;
+  isLogo?: boolean;
+  title?: string;
 }

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ValueProp, Testimonial } from './types';
+import vikingLogo from './Logos/Viking-LOGO.png';
 
 export const VALUE_PROPS: ValueProp[] = [
   {
@@ -152,10 +153,12 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
     name: "Viking Window",
-    role: "Müügi- ja turundusosakond",
-    company: "Viking Window",
+    role: "",
+    company: "Eesti Aknatootja",
     content: "Ehitasime neile süsteemi, mis jälgib konkurente 24/7 ja koondab olulise info automaatselt iganädalaseks raportiks.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=400",
+    image: vikingLogo,
+    title: "Konkurentide ja turu monitooringu süsteem",
+    isLogo: true,
     story: `### Konkurentide ja turu monitooring – Viking Window
 
 Tänapäeval paiskavad ettevõtted oma uudised ja tegemised esmajärjekorras sotsiaalmeediasse. Manuaalselt selle kõige jälgimine võtaks tunde ja polegi mõeldav – ning ikkagi jääks midagi kahe silma vahele.
@@ -191,6 +194,7 @@ Viking Window müügi- ja turundusosakond saab nüüd selge iganädalase ülevaa
     company: "Sinu Firma",
     content: "Ootame põnevusega, et saaksime kirjutada järgmise eduloo just Teie ettevõttest! Võtke meiega ühendust.",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400",
+    title: "Sinu ettevõtte järgmine edulugu",
     story: `### See võiks olla Sinu edulugu!
 
 Iga suur muutus saab alguse esimesest sammust. Doria Nova on aidanud mitmeid ettevõtteid nende digitaalsel teekonnal – alates rutiinsete tööde automatiseerimisest kuni keerukate müügi- ja analüütikasüsteemideni.
@@ -212,6 +216,7 @@ Võtke meiega ühendust ja vaatame, millist väärtust saame Teie ettevõttele l
     company: "Tuleviku Liider",
     content: "Meie lahendused on aidanud säästa tuhandeid töötunde. Kas Teie ettevõte on järgmine?",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=400",
+    title: "Tõestatud väärtus ja tulemused",
     story: `### Kirjutame koos järgmise peatüki
 
 Meie eesmärk ei ole müüa teenust, vaid luua partnerlussuhteid, mis toovad päriselt kasu. Usume, et tehnoloogia peab teenima inimest, mitte vastupidi.
