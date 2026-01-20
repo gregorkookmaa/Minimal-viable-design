@@ -55,7 +55,7 @@ const Testimonials: React.FC = () => {
 
 
   return (
-    <section id="success" className="py-24 bg-gray-50 overflow-hidden relative">
+    <section id="success" className="py-24 bg-gray-50 overflow-hidden relative scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Klientide edulood</h2>

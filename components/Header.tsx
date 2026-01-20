@@ -28,6 +28,14 @@ const Header: React.FC = () => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // If not on home page, let the Link component handle the navigation to "/"
+  };
+
   // Handle scroll from other page navigation
   useEffect(() => {
     if (location.state && location.state.scrollTo) {
@@ -51,7 +59,7 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerClass}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-0">
+        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-0">
           <img src={logo} alt="Doria Nova" className="h-24 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-base font-semibold text-[#44403F]">

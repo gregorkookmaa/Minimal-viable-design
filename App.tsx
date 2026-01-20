@@ -12,7 +12,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react"
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Force instant scroll to top on route change, bypassing smooth scroll CSS
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
   return null;
 };

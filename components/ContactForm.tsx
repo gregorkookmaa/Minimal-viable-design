@@ -38,7 +38,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white grid-bg relative overflow-hidden">
+    <section id="contact" className="py-24 bg-white grid-bg relative overflow-hidden scroll-mt-32">
       {/* Background Glow */}
       <div className="blur-glow w-[600px] h-[600px] bg-brand/5 -bottom-40 -right-40"></div>
       <div className="container mx-auto px-6 relative z-10">
@@ -125,8 +125,8 @@ const ContactForm: React.FC = () => {
                 type="submit"
                 disabled={status === 'loading' || status === 'success'}
                 className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] ${status === 'error'
-                    ? 'bg-red-500 hover:bg-red-600 text-white'
-                    : 'bg-brandDark text-white hover:bg-brand disabled:opacity-50'
+                  ? 'bg-red-500 hover:bg-red-600 text-white'
+                  : 'bg-brandDark text-white hover:bg-brand disabled:opacity-50'
                   }`}
               >
                 {status === 'loading' ? (

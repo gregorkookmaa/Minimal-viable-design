@@ -7,7 +7,7 @@ const ValueProps: React.FC = () => {
   const [selectedProp, setSelectedProp] = React.useState<typeof VALUE_PROPS[0] | null>(null);
 
   return (
-    <section id="services" className="py-24 bg-gray-50">
+    <section id="services" className="py-24 bg-gray-50 scroll-mt-32">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900">Teenused</h2>
