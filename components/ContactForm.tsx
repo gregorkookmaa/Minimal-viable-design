@@ -8,16 +8,33 @@ const ContactForm: React.FC = () => {
     company: '',
     message: ''
   });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('https://services.leadconnectorhq.com/hooks/uvwgWlunzmQ3XErCzmga/webhook-trigger/ea579525-2ef7-485b-917f-7214c7113d8f', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
       setStatus('success');
       setFormData({ name: '', email: '', company: '', message: '' });
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
   };
 
   return (
@@ -106,13 +123,18 @@ const ContactForm: React.FC = () => {
 
               <button
                 type="submit"
-                disabled={status !== 'idle'}
-                className="w-full bg-brandDark text-white py-4 rounded-xl font-bold hover:bg-brand transition-all flex items-center justify-center gap-2 disabled:opacity-50 shadow-lg active:scale-[0.98]"
+                disabled={status === 'loading' || status === 'success'}
+                className={`w-full py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] ${status === 'error'
+                    ? 'bg-red-500 hover:bg-red-600 text-white'
+                    : 'bg-brandDark text-white hover:bg-brand disabled:opacity-50'
+                  }`}
               >
                 {status === 'loading' ? (
                   <span className="w-6 h-6 border-2 border-white/20 border-t-white rounded-full animate-spin"></span>
                 ) : status === 'success' ? (
                   "Saadetud!"
+                ) : status === 'error' ? (
+                  "Viga saatmisel. Proovi uuesti!"
                 ) : (
                   <>
                     Saada päring
