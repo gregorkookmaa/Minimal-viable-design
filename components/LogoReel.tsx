@@ -33,21 +33,21 @@ const LogoReel: React.FC = () => {
   const LogoSet = () => (
     <>
       {TECH_LOGOS.map((logo, index) => (
-        <div 
-          key={index} 
+        <div
+          key={index}
           className="flex items-center gap-4 pr-24 group cursor-pointer transition-all duration-300 flex-shrink-0"
         >
           {/* Fixed size container for the icon */}
           <div className="w-8 h-8 flex items-center justify-center grayscale opacity-40 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 pointer-events-none">
-             <iconify-icon 
-                icon={`simple-icons:${logo.slug}`} 
-                width="32" 
-                height="32"
-                style={{ color: logo.color }}
-             ></iconify-icon>
+            <iconify-icon
+              icon={`simple-icons:${logo.slug}`}
+              width="32"
+              height="32"
+              style={{ color: logo.color }}
+            ></iconify-icon>
           </div>
-          
-          <span 
+
+          <span
             className="text-xl font-semibold tracking-tight text-gray-400 transition-colors duration-300 group-hover:text-[var(--hover-color)] whitespace-nowrap"
             style={{ '--hover-color': logo.color } as React.CSSProperties}
           >
@@ -59,17 +59,19 @@ const LogoReel: React.FC = () => {
   );
 
   return (
-    <div className="w-full bg-white border-y border-gray-100 py-12 overflow-hidden relative">
-      <div className="scroller-inner animate-infinite-scroll">
-        {/* We render exactly two sets. The first set scrolls away, the second set enters. 
-            Because they are identical including the trailing padding, the loop is seamless. */}
-        <LogoSet />
-        <LogoSet />
+    <div className="w-full bg-white relative">
+      <div className="container mx-auto px-6 relative overflow-hidden border-y border-gray-100 py-12">
+        <div className="scroller-inner animate-infinite-scroll">
+          {/* We render exactly two sets. The first set scrolls away, the second set enters. 
+              Because they are identical including the trailing padding, the loop is seamless. */}
+          <LogoSet />
+          <LogoSet />
+        </div>
+
+        {/* Soft fade gradients for a high-end look */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
       </div>
-      
-      {/* Soft fade gradients for a high-end look */}
-      <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
     </div>
   );
 };
