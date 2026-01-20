@@ -53,14 +53,14 @@ const Header: React.FC = () => {
 
   const isHomePage = location.pathname === '/';
   const headerClass = scrolled || !isHomePage
-    ? 'bg-white/80 backdrop-blur-md py-4 shadow-sm border-b border-gray-100'
-    : 'bg-transparent py-6';
+    ? 'bg-white/80 backdrop-blur-md py-2 shadow-sm border-b border-gray-100'
+    : 'bg-transparent py-4';
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerClass}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" onClick={handleLogoClick} className="flex items-center gap-0">
-          <img src={logo} alt="Doria Nova" className="h-24 w-auto" />
+          <img src={logo} alt="Doria Nova" className="h-32 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-base font-semibold text-[#44403F]">
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} className="hover:text-brand transition-colors">Teenused</a>
