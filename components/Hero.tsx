@@ -15,8 +15,8 @@ const Hero: React.FC = () => {
           <div className="flex-1 text-left max-w-3xl">
 
 
-            <h1 className="text-4xl md:text-[3.5rem] lg:text-[4.5rem] font-bold tracking-tight text-[#0E131F] mb-10 leading-[1.05]">
-              Ettevõtte töö <span className="font-semibold text-[#0E131F]">Sujuvaks</span> – <br />
+            <h1 className="text-[2rem] md:text-[3.25rem] lg:text-[4.25rem] font-bold tracking-tight text-[#0E131F] mb-10 leading-[1.05]">
+              Ettevõtte töö <span className="font-semibold text-[#0E131F]">Sujuvaks</span>&nbsp;– <br />
               <span className="font-serif italic text-gradient font-light">Nutikas Automaatika</span> <br />
               teeb ära üksluised ülesanded.
             </h1>
